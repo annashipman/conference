@@ -1,9 +1,13 @@
 from django.test import TestCase
+from sessions.views import get_title
 
-#No tests yet as I am wrangling framework into shape
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+class DefinedTitleTest(TestCase):
+    def test_title_is_Anna(self):
+        test_title = "Anna"
+        actual_title = get_title(test_title)
+        self.assertEqual(actual_title, "Anna")
+
+    def test_title_is_not_Anna(self):
+        test_title = "something else"
+        actual_title = get_title(test_title)
+        self.assertEqual(actual_title, "Shipman")
